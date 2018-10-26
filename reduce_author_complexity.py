@@ -3,7 +3,7 @@ import csv
 
 authors = {}
 
-f = open('/tmp/data/books_list/master_list.csv')
+f = open('/tmp/data/gut/master_list.csv')
 reader = csv.reader(f)
 for i in range(5):
     next(reader)
