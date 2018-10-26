@@ -15,6 +15,12 @@ O segundo passo foi criar um reducer (reduce_vocabulary.py) para encontrar as pa
 
 O passo final foi criar um novo reducer (reduce_author_complexity.py) para processar a complexidade de cada autor, para isso, o script inicialmente carregou um arquivo com o nome de cada autor para cada nome de arquivo de livro disponível utilizando o arquivo fornecido “master_list.csv” e criou um dicionário com o nome do arquivo e o autor que o escreveu. Em seguida, carregamos o dicionário criado no script anterior com as 3000 palavras mais comuns. Posteriormente, este reducer recebeu como entrada o mesmo arquivo gerado pelo script de mapper gerado no início e para cada linha lida deste arquivo, contendo o nome do arquivo do livro, a palavra fizemos o processamento a seguir, procuramos o nome do arquivo no dicionário de autor, caso não encontrado pulamos para uma nova linha, assim eliminamos os autores considerados como desconhecidos, após isso criamos um novo dicionário que continha o nome do autor como chave e as palavras mencionadas por ele em qualquer livro, depois olhávamos se a palavra mencionada pelo autor já estava no dicionário, caso afirmativo, ela era ignorada, caso contrário verificamos se a palavra constava no dicionário de palavras comuns, se ela estivesse nesse dicionário adicionamos ela com o valor 0, caso não constasse era adicionada com o valor 1.  Por fim, para cada autor no dicionário criado somamos todos os valores das palavras e dividimos pelo número total de palavras mencionadas pelo autor e com isso obtemos a complexidade de escrita de cada autor. Com este resultado, ordenamos a lista de autores da maior complexidade para a menor e escrevemos na saída este resultado, que é o resultado final requisitado no problema.
 
+Resultado dos 5 primeiros autores com maior complexidade de vocabulário considerando os 250 primeiros livros da biblioteca.
+1. Garibaldi, 0.955
+2. Burton, 0.936
+3. Shakespeare, 0.934
+4. Gibbon, 0.933
+5. Zola, 0.93
 
 ## Passos para executar o script
 
@@ -38,4 +44,4 @@ Para executar o trabalho siga estes passos:
 
 
 ### Observação: 
-**Tivemos problema de estouro de memória da máquina docker durante o processo de map quando executamos o script com os 595 livros do arquivo gut.zip. Sendo assim, Utilizamos nos nossos resultados os XX primeiros arquivos ordenados por ordem alfabética**
+**Tivemos problema de estouro de memória da máquina docker durante o processo de map quando executamos o script com os 595 livros do arquivo gut.zip. Sendo assim, Utilizamos nos nossos resultados os 250 primeiros arquivos ordenados por ordem alfabética**
